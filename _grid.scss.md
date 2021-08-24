@@ -1,7 +1,7 @@
 # _grid.scss
 
 //grid(欄位/欄寬 px/gutter px)
-
+```
 @mixin grid($columns,$col-width,$gutter) {
 	.column {
 		margin: 0 $gutter $gutter 0;
@@ -13,17 +13,19 @@
 		}
 	}
 }
-
+```
 
 // example:
 
+```
 .container {
 	// 我想要12欄，每欄65px寬，欄與欄間隔30px距離
 	@include grid(12, 65px, 30px);
 }
-
+```
 // 會產生如下結果:
 
+```
 .container .column .col1 {
   width: 65px; }
 .container .column .col2 {
@@ -48,3 +50,4 @@
   width: 1015px; }
 .container .column .col12 {
   width: 1110px; }
+ ```
