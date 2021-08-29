@@ -93,3 +93,24 @@ $items: 12;
   }
 }
 ```
+
+運用:
+
+```
+//在lg斷點以上時，會變成一行()
+<div class="grid">
+  <div class="grid__item grid__item--lg-span-1">
+    lg-1
+  </div>
+  <div class="grid__item grid__item--lg-span-2">
+    lg-2
+  </div>
+  <div class="grid__item grid__item--lg-span-3">
+    lg-3
+  </div>
+  <div class="grid__item grid__item--lg-span-6">
+    lg-6
+  </div>
+</div>
+```
+
