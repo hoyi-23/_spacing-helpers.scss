@@ -1,7 +1,8 @@
 # _grid.scss
 
-//grid(欄位/欄寬 px/gutter px)
+## 寫法一: 沒有響應式
 ```
+//grid(欄位/欄寬 px/gutter px)
 @mixin grid($columns,$col-width,$gutter) {
 	.column {
 		margin: 0 $gutter $gutter 0;
@@ -51,3 +52,44 @@
 .container .column .col12 {
   width: 1110px; }
  ```
+ 
+ ## 寫法二: 有響應式 ( [CodePen 實做](https://codepen.io/Hoyi/pen/JjJYmLg?editors=1100))
+ ```
+// breakpoints map
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// media query mixin
+@mixin break($size) {  
+  @media (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+// number of columns variable
+$items: 12;
+
+// grid container
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 1rem;
+}
+
+// loop over the breakpoints
+@each $key, $value in $breakpoints {
+  @for $i from 1 through $items {
+    .grid__item--#{$key}-span-#{$i} {
+      flex: 0 0 100%;
+      @include break($key) {
+        flex: 0 0 #{$i / $items * 100%};
+      }
+    }
+  }
+}
+```
